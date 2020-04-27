@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu Slide Horizontal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="master.css">
+
+  </head>
+  <body>
+    <style media="screen">
+      @keyframes slidein {
+        from {left: 100%;}
+        to {left: 0;}
+      }
+      @keyframes slideout {
+        from {left: 0;}
+        to {left: 100%;}
+      }
+      .menuSlide {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
+      .open {
+        animation-name: slidein;
+        animation-duration: 0.5s;
+      }
+      .closed {
+        animation-name: slideout;
+        animation-duration: 0.5s;
+        left: 100%;
+      }
+    </style>
+    <section class="menuSlide bg-primary closed text-light">
+      <nav class="navbar navbar-light d-flex align-items-baseline">
+        <ul class="list-unstyled">
+          <li class="list-unstyled-item">Condos</li>
+          <li class="list-unstyled-item">Maisons</li>
+          <li class="list-unstyled-item">Conseil / Blogue</li>
+          <li class="list-unstyled-item">Conexion</li>
+          <li class="list-unstyled-item">EN</li>
+        </ul>
+        <button id="navbarTogglerSlideClose" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+
+    </section>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <div class="w-75">
+        <input type="search" name="" value="">
+      </div>
+      <button id="navbarTogglerSlide" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <script>
+      var button = document.querySelector('#navbarTogglerSlide');
+      var buttonClose = document.querySelector('#navbarTogglerSlideClose');
+      var menuSlide = document.querySelector('.menuSlide');
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        menuSlide.classList.add('open');
+        menuSlide.classList.remove('closed');
+      });
+      buttonClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        menuSlide.classList.add('closed');
+        menuSlide.classList.remove('open');
+      });
+    </script>
+  </body>
+</html>
